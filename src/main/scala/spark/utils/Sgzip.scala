@@ -3,9 +3,6 @@ package spark.utils
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.SparkConf
-import org.apache.spark.sql.SQLContext
-import org.apache.spark.sql._
-import org.apache.spark.sql
 
 import org.apache.spark.{ SparkContext, SparkConf }
 
@@ -13,7 +10,6 @@ import org.apache.hadoop.fs._
 import org.apache.hadoop.conf._
 
 import org.apache.spark.sql.hive._
-
 
 object Sgzip {
 
@@ -33,19 +29,7 @@ object Sgzip {
       val targetDirectoryHDFS = targetDirectoryParam
       val numberOfPartitions = numberOfPartitionsParam.toInt
 
-      // Delete target directory if exists
-
-      /*
-      val path = new Path(targetDirectoryParam)
-      val conf = new Configuration()
-      val hdfsCoreSitePath = new Path("core-site.xml")
-      val hdfsHDFSSitePath = new Path("hdfs-site.xml")
-      conf.addResource(hdfsCoreSitePath)
-      val fileSystem = FileSystem.get(conf)
-      fileSystem.delete(path, true) //true recursive
-
-       */
-      //Compress Source files and place them in target directory
+          //Compress Source files and place them in target directory
       sourceDirectoryHDFS.coalesce(numberOfPartitions, false).saveAsTextFile(targetDirectoryHDFS, classOf[org.apache.hadoop.io.compress.GzipCodec])
 
       println("Sgzip -> Compression completed sucessfully, check HDFS location " + targetDirectoryHDFS)
