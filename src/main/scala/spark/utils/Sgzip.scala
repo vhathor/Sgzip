@@ -17,6 +17,7 @@ import org.apache.spark.sql.hive._
 //spark-submit  --master yarn-cluster --num-executors 3 --executor-cores 1 --executor-memory 512M --class com.sony.ps.App /mnt/hdfs/user/vverma/sgzip-0.1.jar '/user/vverma/sd' '/user/vverma/sdout'
 //spark-submit  --master local  --num-executors 1 --executor-cores 1 --executor-memory 512M --class com.sony.ps.App /mnt/hdfs/user/vverma/sgzip-0.1.jar '/user/vverma/sd' '/user/vverma/sdout'
 
+//Comment
 
 object Sgzip {
 
